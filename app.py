@@ -174,5 +174,6 @@ def get_recipes():
 
   print(recipes)
   return render_template('recipes.html', recipes = recipes)
-
-app.run(host='0.0.0.0', port=8080, debug=True)
+  
+if __name__ == "__main__":
+ app.run(host='0.0.0.0', port=8080, debug=True)
