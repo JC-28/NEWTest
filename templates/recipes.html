@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}Recipe{% endblock %}
+{% block page %}Recipe{% endblock %}
+{% block style %}
+hr.{
+  border-top: 1px solid green;
+}
+
+}
+
+@media screen and (min-width: 992px){
+    #meal{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+{% endblock %}
+{{ super() }}
+
+{% block content %}
+<div class="container">
+  <h2 class = "title">Your Search Results:</h2>
+  
+  <div style="max-width: 70%; margin: auto; padding-top:3%">
+  {% for recipe in recipes %}
+   <!-- <div class="media"> -->
+  
+      <a href="{{recipe['strSource'] | safe }}"><img  src="{{recipe['strMealThumb']}}" class="mr-3" alt="..." width="20%" height="20%">
+      </a>
+      <div class="media-body">
+        <h5 class="mt-0">{{recipe['strMeal']}}</h5>
+        <p>{{recipe['strInstructions'].replace('\r\n','<br>') | safe}}</p>
+      </div>
+<hr style="border-top: 1px solid green;">
+}">
+      <br>
+  {% endfor %}
+  <br>
+</div>
+   </div>
+{% endblock %}

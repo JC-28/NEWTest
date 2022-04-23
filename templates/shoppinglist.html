@@ -1,0 +1,50 @@
+{% extends "layout1.html" %}
+{% block title %}Shopping List{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<center class="card" style=" font-size: 35px; font-family:Garamond;">
+{% block page %} {{ current_user.username }}'s Shopping list {% endblock %}
+</center>
+<div class="back-image">
+  
+    <main class="container">
+        <div class="card" >
+          <div class="card-content">
+            <span class="card-title" style="font-family: Garamond;">What would you like to add to your Shopping list?</span>
+            <form name="addForm" method="POST" action="/createList">
+              <div class="input-field">
+                <input type="text" name="text" placeholder="Enter item to add to your shopping list" class="materialize-textarea"></textarea>
+              </div>
+              <input class="btn green white-text" type="submit" value="SAVE" />
+            </form>
+          </div>
+        </div>
+
+        
+          <ul class="collection with-header" id="result">
+            {% if current_user.is_authenticated %}
+                {% for list in lists %}
+                     <li class="card collection-item col s12 m4">
+                        <form id="listForm{{list.id}}" method="POST" action="toggle/{{list.id}}" class="card-content">
+                          <span class="card-title">{{list.text}}
+                            <label class="right">
+                              <input type="checkbox" name="done" onchange="listForm{{list.id}}.submit()" {%  if list.done %} checked {% endif %} />
+                              <span>Done</span>
+                            </label>
+                          </span>
+                        </form>
+                        <div class="card-action">
+                          <a href="/editList/{{list.id}}">EDIT</a>
+                          <a href="/deleteList/{{list.id}}">DELETE</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% endif %}
+          </ul>
+    
+   </div>
+</main>
+
+{% endblock %}

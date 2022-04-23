@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}FoodieZone homepage{% endblock %}
+{% block style %}
+  .image{
+    max-width:100%;
+    height:auto;
+    vertical-align:left;
+    color:inherit;
+    }
+  h2{
+    text-align: center;
+    font-family: cursive;
+    }
+{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+ {% if current_user.is_authenticated %}
+<center class="card" style=" font-size: 35px; font-family:Garamond;">
+{% block page %} Hi {{ current_user.username }}!{% endblock %}
+</center>
+{% endif %}
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:600px;min-width:200px" id="home">
+        <img class="image" src="https://static01.nyt.com/images/2017/09/25/dining/bonebrothchickenstock/bonebrothchickenstock-articleLarge.jpg" alt="Cooking prep picture" width="600px" height="100px">
+        <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+        </div>
+    </header>
+<br>
+    <!-- Page content -->
+  <!--  <div class="w3-content" style="max-width:1100px"> -->
+        <h2>Tell us what ingredient you have and we will do the rest for you!</h2>
+  
+        <form action="/recipes" class="example" style="margin:auto;max-width:600px;" method="get">
+            <input type="text" class="searchbar__input" placeholder="Search recipe" id="search-input" name="search">
+            <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+  <div>
+    <br>
+   <h2>Or simply choose from our top recipes for this month! </h2>
+    <!-- <h1 class="w3-content" style="max-width:1100px">Or simply choose from our top recipes for this month!</h1>
+  </div> 
+<!-- !Sample Menu! -->
+    <!--
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px;"> -->
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter">
+      <img src="https://natashaskitchen.com/wp-content/uploads/2020/05/Pefect-Cheesecake-7.jpg" alt="Cheesecake recipe" style="width:100%">
+      <button class=recipe-button onclick="window.location.href='https://www.themealdb.com/meal.php?c=52858';">Cheesecake recipe</button>
+    </div>
+    <div class="w3-quarter">
+      <img src="https://natashaskitchen.com/wp-content/uploads/2021/08/Grilled-Cheese-Sandwich-3.jpg" alt="Grilled Cheese Sandwich" style="width:100%">
+     <button class=recipe-button onclick="window.location.href='https://natashaskitchen.com/grilled-cheese-sandwich/';">Grilled Cheese Sandwich</button>
+    </div>
+ <div class="w3-quarter">
+      <img src="https://cafedelites.com/wp-content/uploads/2018/02/Lamb-Chops-ONE-1.jpg" alt="Lamb" style="width:100%">
+      <button class=recipe-button onclick="window.location.href='https://www.themealdb.com/browse.php?b=l';">Lamb recipes</button>
+    </div>
+       <div class="w3-quarter">
+      <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="Cake" style="width:100%">
+      <button class=recipe-button onclick="window.location.href='https://www.themealdb.com/browse.php?s=cake?c=52858';">Cake recipes</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

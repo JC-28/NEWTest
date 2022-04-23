@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Signup up for FoodieZone</title>
+  <style>
+    h1 {
+    font-family: "Papyrus";
+    letter-spacing: 5px;
+   position: auto;
+            }
+  </style>
+</head>
+  <body>
+  <ul class="topnav">
+  <li><a class="active" href="/signup">Join Now!</a></li>
+  <li class="right"><a href="/">FoodieZone homepage!</a></li>
+  <li class="right"><a href="/login">Join Now!</a></li>
+  <li class=right><a href="/about">About Us!</a></li>
+</ul>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <nav class="white black-text" style="padding: 10px">
+    <div class="nav-wrapper">
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+  </nav>
+  {% endif %}
+{% endwith %}
+  <div class="back-image">
+    <div class="signupFrm">
+       <form id="myForm" method="POST" action="/signup" class="form">
+         {{ form.csrf_token }}
+      <h1 class="title">Sign up</h1>
+
+      <div class="inputContainer">
+         {{ form.email(size=50, class="validate input") }}
+        {{ form.email.label(class="label") }}
+      </div>
+      
+      <div class="inputContainer">
+      {{ form.username(size=20, class="validate input") }}
+      {{ form.username.label(class="label")}}
+      </div>
+
+      <div class="inputContainer">
+      {{ form.password(size=20, class="validate input") }}
+      {{ form.password.label(class="label") }}
+      </div>
+
+      <div class="inputContainer">
+      {{ form.confirm(size=20, class="validate input") }}
+      {{ form.confirm.label(class="label")}}
+      </div>
+
+       {{form.submit(style="margin-right:absolute;")}}
+      
+    </form>
+  </div>
+  </div>
+</body>
+</html>

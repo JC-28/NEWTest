@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Login page{% endblock %}
+
+{{ super() }}
+{% block content %}
+ <div class="back-image">
+     <center> <h1 style="font-size:50px; font-family:Papyus; letter-spacing:1px; color:white;"> Login Form </h1> </center> 
+
+<form action="/login"  method="POST" style="max-width:500px;margin:auto">
+  {{ form.csrf_token }}
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    {{ form.username(size=20, class="validate input-field") }}
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+  {{ form.password(size=20, class="validate input-field") }}
+  </div>
+  
+  {{form.submit}}
+</form>
+   <br>
+   
+ <form action="/" style="max-width:500px;margin:auto">
+     <button type="submit" class="btn">Cancel</button>
+ </form>
+ </div>
+{% endblock %}

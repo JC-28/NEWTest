@@ -1,0 +1,31 @@
+{% extends "layout1.html" %}
+{% block title %}Edit Todo {% endblock %}
+{% block page %} Edit Todo {% endblock %}
+
+{% block link%}
+    <ul id="nav-mobile" class="right">
+        <li><a href="/app">Cancel</a></li>
+    </ul>
+{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+      <main class="container">
+
+        <div class="card" >
+          <div class="card-content">
+            <span class="card-title">Edit Todo</span>
+            <form name="addForm" method="POST" action="/editTodo/{{id}}">
+              <div class="input-field">
+                <input type="text" name="text" placeholder="enter to-do" class="materialize-textarea"></textarea>
+                <label for="text">Enter todo Text</label>
+              </div>
+              <input class="btn blue white-text" type="submit" value="SAVE" />
+            </form>
+          </div>
+        </div>
+
+
+    </main>
+{% endblock %}
